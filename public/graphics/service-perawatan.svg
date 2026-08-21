@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 675" width="900" height="675" role="img" aria-label="Pola rusuk chevron bertumpuk" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="key-service-perawatan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.055"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient><radialGradient id="vig-service-perawatan" cx="0.5" cy="0.42" r="0.78"><stop offset="0.45" stop-color="#000000" stop-opacity="0"/><stop offset="1" stop-color="#000000" stop-opacity="0.55"/></radialGradient><clipPath id="clip-service-perawatan"><rect x="0" y="0" width="900" height="675"/></clipPath></defs>
+<rect width="900" height="675" fill="#0e100f"/>
+<g clip-path="url(#clip-service-perawatan)">
+<polyline points="0,17.74 180,49.76 360,17.74 540,49.76 720,17.74 900,49.76" fill="none" stroke="#454b49" stroke-width="6.3" opacity="0.48" stroke-linejoin="round"/>
+<polyline points="0,85.24 128.57,117.26 257.14,85.24 385.71,117.26 514.29,85.24 642.86,117.26 771.43,85.24 900,117.26" fill="none" stroke="#454b49" stroke-width="3.52" opacity="0.57" stroke-linejoin="round"/>
+<polyline points="0,152.74 128.57,184.76 257.14,152.74 385.71,184.76 514.29,152.74 642.86,184.76 771.43,152.74 900,184.76" fill="none" stroke="#454b49" stroke-width="4.34" opacity="0.62" stroke-linejoin="round"/>
+<polyline points="0,220.24 150,252.26 300,220.24 450,252.26 600,220.24 750,252.26 900,220.24" fill="none" stroke="#454b49" stroke-width="4.34" opacity="0.66" stroke-linejoin="round"/>
+<polyline points="0,287.74 128.57,319.76 257.14,287.74 385.71,319.76 514.29,287.74 642.86,319.76 771.43,287.74 900,319.76" fill="none" stroke="#454b49" stroke-width="5.25" opacity="0.62" stroke-linejoin="round"/>
+<polyline points="0,355.24 225,387.26 450,355.24 675,387.26 900,355.24" fill="none" stroke="#454b49" stroke-width="4.86" opacity="0.35" stroke-linejoin="round"/>
+<polyline points="0,422.74 180,454.76 360,422.74 540,454.76 720,422.74 900,454.76" fill="none" stroke="#454b49" stroke-width="4.47" opacity="0.79" stroke-linejoin="round"/>
+<polyline points="0,490.24 180,522.26 360,490.24 540,522.26 720,490.24 900,522.26" fill="none" stroke="#ff6a3d" stroke-width="9.45" opacity="1" stroke-linejoin="round"/>
+<polyline points="0,557.74 128.57,589.76 257.14,557.74 385.71,589.76 514.29,557.74 642.86,589.76 771.43,557.74 900,589.76" fill="none" stroke="#454b49" stroke-width="7.32" opacity="0.73" stroke-linejoin="round"/>
+<polyline points="0,625.24 150,657.26 300,625.24 450,657.26 600,625.24 750,657.26 900,625.24" fill="none" stroke="#454b49" stroke-width="6.38" opacity="0.4" stroke-linejoin="round"/>
+</g>
+<rect width="900" height="675" fill="url(#key-service-perawatan)"/>
+<rect width="900" height="675" fill="url(#vig-service-perawatan)"/>
+</svg>

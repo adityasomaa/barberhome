@@ -1,0 +1,277 @@
+@import "tailwindcss";
+@import "./components.css";
+
+/* ---------------------------------------------------------------------------
+   Barberhome design tokens.
+
+   Every custom rule in this file lives inside an explicit @layer so Tailwind
+   utilities always win the cascade. Tailwind v4 registers `theme, base,
+   components, utilities` itself; we only ever add into base/components.
+--------------------------------------------------------------------------- */
+
+@theme {
+  /* -- Color ---------------------------------------------------------------
+     Ratios verified by `npm run check:contrast`. Every text pairing clears
+     WCAG AA 4.5:1; control borders clear the 3:1 non-text floor.            */
+  --color-bg: #0e100f;
+  --color-surface: #171a19;
+  --color-surface-2: #1f2322;
+  --color-surface-3: #262b29;
+  --color-fg: #f2efe9;
+  --color-muted: #9aa19d;
+  --color-accent: #ff6a3d;
+  --color-on-accent: #0e100f;
+  --color-line: #2e3331;
+  --color-line-strong: #6d7572;
+  --color-danger: #8e2b22;
+  --color-danger-fg: #ff8c82;
+
+  /* -- Type ------------------------------------------------------------- */
+  --font-sans: "Neue Montreal", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* -- Motion ----------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+:root {
+  /* Mirrors of the @theme colors, kept as plain custom properties so the
+     contrast gate can parse them and so non-Tailwind CSS can reference them. */
+  --c-bg: #0e100f;
+  --c-surface: #171a19;
+  --c-surface-2: #1f2322;
+  --c-surface-3: #262b29;
+  --c-fg: #f2efe9;
+  --c-muted: #9aa19d;
+  --c-accent: #ff6a3d;
+  --c-on-accent: #0e100f;
+  --c-line: #2e3331;
+  --c-line-strong: #6d7572;
+  --c-danger: #8e2b22;
+  --c-danger-fg: #ff8c82;
+
+  /* -- The z-index scale ------------------------------------------------
+     This is the ONLY z-index scale in the codebase. There are zero raw
+     z-index values anywhere else; every layer references one of these.
+
+       content < sticky header < mobile menu < calendar/popover
+               < cookie banner < skip link
+
+     The two transition layers sit above the whole stack by necessity: while
+     a curtain is closed nothing underneath is interactive, so nothing below
+     it can be occluded in a way that matters.                              */
+  --z-content: 1;
+  --z-raised: 10;
+  --z-header: 100;
+  --z-menu: 200;
+  --z-popover: 300;
+  --z-consent: 400;
+  --z-skip: 500;
+  --z-curtain: 600;
+  --z-intro: 700;
+
+  /* -- Layout ------------------------------------------------------------ */
+  --shell: 88rem;
+  --gutter: 1.25rem;
+  --header-h: 4rem;
+
+  color-scheme: dark;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 2rem;
+    --header-h: 4.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 3rem;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Neue Montreal";
+    src: url("/fonts/NeueMontreal-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  * {
+    min-width: 0;
+  }
+
+  html {
+    background-color: var(--c-bg);
+    /* `clip` (not `hidden`) keeps position:sticky working on descendants and
+       still prevents a rogue child from creating a horizontal scrollbar. */
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--c-bg);
+    color: var(--c-fg);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.55;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Browser surfaces we did not draw still carry the design. */
+  ::selection {
+    background-color: var(--c-accent);
+    color: var(--c-on-accent);
+  }
+
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-line-strong) var(--c-bg);
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--c-bg);
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--c-line-strong);
+    border: 3px solid var(--c-bg);
+    border-radius: 999px;
+  }
+
+  input,
+  textarea,
+  button,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--c-muted);
+    opacity: 1;
+  }
+
+  /* Tabular figures everywhere a number is a quantity, not prose. */
+  .tnum,
+  time,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+}
+
+@layer components {
+  /* -- Shell ------------------------------------------------------------- */
+  .shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* -- Visually hidden ---------------------------------------------------
+     Uses clip-path, never a -9999px offset: an offscreen absolute element
+     with no positioned ancestor escapes its container and becomes the
+     horizontal-overflow offender the audit keeps finding.                  */
+  .vh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* -- Hairline rules, the clipper-guard motif --------------------------- */
+  .rule {
+    border: 0;
+    height: 1px;
+    background-color: var(--c-line);
+  }
+
+  /* -- Reveal ------------------------------------------------------------
+     Default state is visible. The observer only ever *removes* the shifted
+     state, so a page that never fires IntersectionObserver still reads. */
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal[data-revealed="false"] {
+      opacity: 0;
+      transform: translate3d(0, 1.25rem, 0);
+    }
+    .reveal {
+      transition:
+        opacity 0.7s var(--ease-out-expo),
+        transform 0.7s var(--ease-out-expo);
+      transition-delay: var(--reveal-delay, 0ms);
+    }
+  }
+
+  /* -- Grain, drawn once into a clipped, fixed, inert layer -------------- */
+  .grain-frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    /* Paint containment stops a scaled canvas from bleeding past this box. */
+    contain: paint;
+    pointer-events: none;
+  }
+  .grain-frame > canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.055;
+    mix-blend-mode: screen;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

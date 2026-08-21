@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Pola pita diagonal dalam warna aksen Barberhome" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="key-hero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.055"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient><radialGradient id="vig-hero" cx="0.5" cy="0.42" r="0.78"><stop offset="0.45" stop-color="#000000" stop-opacity="0"/><stop offset="1" stop-color="#000000" stop-opacity="0.55"/></radialGradient><clipPath id="clip-hero"><rect x="0" y="0" width="1600" height="1000"/></clipPath></defs>
+<rect width="1600" height="1000" fill="#0e100f"/>
+<g clip-path="url(#clip-hero)">
+<rect width="1600" height="1000" fill="#171a19" opacity="0.5"/>
+<path d="M -1092.67 1000 L -478.82 0 L -436.84 0 L -1050.69 1000 Z" fill="#454b49" opacity="0.36"/>
+<path d="M -972.97 1000 L -359.12 0 L -302.96 0 L -916.81 1000 Z" fill="#2e3331" opacity="0.31"/>
+<path d="M -853.26 1000 L -239.41 0 L -202.6 0 L -816.45 1000 Z" fill="#454b49" opacity="0.36"/>
+<path d="M -733.56 1000 L -119.71 0 L -54.69 0 L -668.54 1000 Z" fill="#2e3331" opacity="0.28"/>
+<path d="M -613.85 1000 L 0 0 L 50 0 L -563.85 1000 Z" fill="#454b49" opacity="0.21"/>
+<path d="M -494.14 1000 L 119.71 0 L 168.56 0 L -445.29 1000 Z" fill="#2e3331" opacity="0.36"/>
+<path d="M -374.44 1000 L 239.41 0 L 270.53 0 L -343.32 1000 Z" fill="#ff6a3d" opacity="1"/>
+<path d="M -254.73 1000 L 359.12 0 L 424.6 0 L -189.25 1000 Z" fill="#2e3331" opacity="0.36"/>
+<path d="M -135.03 1000 L 478.82 0 L 533.37 0 L -80.48 1000 Z" fill="#454b49" opacity="0.21"/>
+<path d="M -15.32 1000 L 598.53 0 L 636.91 0 L 23.06 1000 Z" fill="#2e3331" opacity="0.31"/>
+<path d="M 104.38 1000 L 718.23 0 L 761.51 0 L 147.66 1000 Z" fill="#454b49" opacity="0.18"/>
+<path d="M 224.09 1000 L 837.94 0 L 897.08 0 L 283.23 1000 Z" fill="#2e3331" opacity="0.19"/>
+<path d="M 343.79 1000 L 957.64 0 L 1015.44 0 L 401.59 1000 Z" fill="#454b49" opacity="0.36"/>
+<path d="M 463.5 1000 L 1077.35 0 L 1142.49 0 L 528.64 1000 Z" fill="#2e3331" opacity="0.28"/>
+<path d="M 583.2 1000 L 1197.05 0 L 1234.3 0 L 620.45 1000 Z" fill="#454b49" opacity="0.4"/>
+<path d="M 702.91 1000 L 1316.76 0 L 1372.52 0 L 758.67 1000 Z" fill="#2e3331" opacity="0.23"/>
+<path d="M 822.62 1000 L 1436.47 0 L 1475.11 0 L 861.26 1000 Z" fill="#454b49" opacity="0.26"/>
+<path d="M 942.32 1000 L 1556.17 0 L 1603.7 0 L 989.84 1000 Z" fill="#2e3331" opacity="0.37"/>
+<path d="M 1062.03 1000 L 1675.88 0 L 1725.98 0 L 1112.13 1000 Z" fill="#454b49" opacity="0.26"/>
+<path d="M 1181.73 1000 L 1795.58 0 L 1841.73 0 L 1227.88 1000 Z" fill="#2e3331" opacity="0.32"/>
+<path d="M 1301.44 1000 L 1915.29 0 L 1971.61 0 L 1357.76 1000 Z" fill="#454b49" opacity="0.26"/>
+<path d="M 1421.14 1000 L 2034.99 0 L 2090.05 0 L 1476.2 1000 Z" fill="#2e3331" opacity="0.16"/>
+<path d="M 1540.85 1000 L 2154.7 0 L 2215.51 0 L 1601.66 1000 Z" fill="#454b49" opacity="0.26"/>
+<path d="M 1660.55 1000 L 2274.4 0 L 2325.47 0 L 1711.62 1000 Z" fill="#2e3331" opacity="0.23"/>
+<path d="M 1780.26 1000 L 2394.11 0 L 2452.46 0 L 1838.61 1000 Z" fill="#454b49" opacity="0.18"/>
+</g>
+<rect width="1600" height="1000" fill="url(#key-hero)"/>
+<rect width="1600" height="1000" fill="url(#vig-hero)"/>
+</svg>
