@@ -1208,12 +1208,6 @@
       display: none;
     }
   }
-  @media (max-width: 767px) {
-    .footer {
-      padding-bottom: 5rem;
-    }
-  }
-
   /* == Footer ============================================================= */
   .footer {
     padding-block: clamp(4rem, 10vw, 7rem) 3rem;
@@ -1282,6 +1276,14 @@
     .footer__grid {
       grid-template-columns: 2fr 1fr 1fr;
       gap: 3rem;
+    }
+  }
+  @media (max-width: 767px) {
+    /* Clears the fixed booking bar. This has to come after the .footer rule
+       above: the same-specificity `padding-block` shorthand there would
+       otherwise win on source order and the last line would sit under the bar. */
+    .footer {
+      padding-bottom: 6rem;
     }
   }
 
