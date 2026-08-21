@@ -7,8 +7,16 @@
  * invented copy inside a component.
  */
 
-/** Final production origin. Used for canonical URLs, sitemap, robots and OG. */
-export const SITE_URL = "https://barberhome.vercel.app";
+/**
+ * Final production origin. Canonical URLs, the sitemap, robots and the OG card
+ * all derive from this one constant.
+ *
+ * Not `barberhome.vercel.app`: that hostname is already assigned to another
+ * Vercel account and returns 409 on claim. `barberhome-id.vercel.app` is the
+ * nearest free name and was claimed explicitly, rather than accepting the
+ * team-scoped default `barberhome-onyx-creative-asia.vercel.app`.
+ */
+export const SITE_URL = "https://barberhome-id.vercel.app";
 
 export const SITE_NAME = "Barberhome";
 

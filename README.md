@@ -4,7 +4,7 @@ Company profile and booking site for Barberhome, a barbershop that until now
 took reservations through a third-party platform. The point of this build is
 that the shop owns the booking form.
 
-Live: https://barberhome.vercel.app
+Live: https://barberhome-id.vercel.app
 
 ---
 
