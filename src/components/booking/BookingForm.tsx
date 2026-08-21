@@ -336,10 +336,14 @@ function Confirmation({
   sourceLabel: string;
 }) {
   const { booking, whatsappUrl } = result;
+  // Date and time get a row each. Squeezing both into one truncates at the
+  // column count and drops the time, which is the half a visitor most needs to
+  // check before they send the message.
   const rows = [
     { label: "Nama", value: booking.name },
     { label: "Layanan", value: serviceName(booking.service) },
-    { label: "Waktu", value: `${formatLongDate(booking.date)} ${booking.time}` },
+    { label: "Tanggal", value: formatLongDate(booking.date) },
+    { label: "Jam", value: `${booking.time} WIB` },
   ];
   const summary = `Reservasi tersusun untuk ${booking.name}, layanan ${serviceName(
     booking.service,
