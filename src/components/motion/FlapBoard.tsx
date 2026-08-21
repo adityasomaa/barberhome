@@ -9,11 +9,18 @@ const CHARSET = " ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,:+-/()";
 
 type Props = {
   rows: FlapRow[];
+  /** Overrides the content-derived width. Rarely needed. */
   columns?: number;
   className?: string;
   /** Announced once, in place of the individual cells. */
   summary: string;
 };
+
+/** Never narrower than this, so a short board still reads as a board. */
+const MIN_COLUMNS = 16;
+/** Never wider than this; past it the board stops fitting a phone even with
+    horizontal scroll, and the longest real value fits well inside. */
+const MAX_COLUMNS = 26;
 
 /**
  * A split-flap board, the way a shop displays what is next.
@@ -31,11 +38,21 @@ type Props = {
  * It is used once, on the booking confirmation, where the mechanical settle is
  * doing a job: it is the moment the request becomes a legible ticket.
  */
-export function FlapBoard({ rows, columns = 22, className, summary }: Props) {
+export function FlapBoard({ rows, columns, className, summary }: Props) {
   const boardRef = useRef<HTMLDivElement>(null);
+
+  // Width comes from the content, not a fixed guess. A hard column count
+  // silently truncates whichever value happens to be longest, and on this
+  // board every value is something the visitor is meant to check.
+  const cols = useMemo(() => {
+    if (columns) return columns;
+    const longest = rows.reduce((max, r) => Math.max(max, r.value.length), 0);
+    return Math.min(MAX_COLUMNS, Math.max(MIN_COLUMNS, longest));
+  }, [rows, columns]);
+
   const signature = useMemo(
-    () => `${columns}|${rows.map((r) => `${r.label}=${r.value}`).join("|")}`,
-    [rows, columns],
+    () => `${cols}|${rows.map((r) => `${r.label}=${r.value}`).join("|")}`,
+    [rows, cols],
   );
 
   useEffect(() => {
@@ -100,7 +117,7 @@ export function FlapBoard({ rows, columns = 22, className, summary }: Props) {
       <p className="vh">{summary}</p>
       <div ref={boardRef} aria-hidden="true">
         {rows.map((row, rowIndex) => {
-          const value = row.value.toUpperCase().slice(0, columns).padEnd(columns, " ");
+          const value = row.value.toUpperCase().slice(0, cols).padEnd(cols, " ");
           return (
             <div className="flap__row" key={row.label}>
               <span className="flap__label">{row.label}</span>
